@@ -29,7 +29,7 @@ An Groq API key is required to make the client-sided call to the LLM.  A Groq ac
 """)
 
 models = {"LLaMA3 8b": "llama3-8b-8192","LLaMA3 70b": "llama3-70b-8192","Mixtral 8x7b": "mixtral-8x7b-32768","Gemma 7b": "gemma-7b-it"}
-API_KEY = st.sidebar.text_input("API key: ", key="api_key")
+API_KEY = st.sidebar.text_input("API key: ", key="api_key", type='password')
 MODELO = st.sidebar.selectbox("Select you model", options=list(models.keys()), index=0)
 GPT_MODEL = models[MODELO]
 
@@ -167,7 +167,6 @@ if submitted:
         trigger_search(query, st)    
 
 if st.session_state['search_result']:
-    st.markdown()
     st.text_area("Search Results", value=st.session_state['search_result'], height=300)
 
 if st.session_state['search_logs']:
